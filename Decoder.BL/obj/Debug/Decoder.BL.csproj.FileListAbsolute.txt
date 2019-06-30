@@ -1,0 +1,6 @@
+C:\Users\Tsorion\source\repos\Decoder\Decoder.BL\bin\Debug\Decoder.BL.dll
+C:\Users\Tsorion\source\repos\Decoder\Decoder.BL\bin\Debug\Decoder.BL.pdb
+C:\Users\Tsorion\source\repos\Decoder\Decoder.BL\obj\Debug\Decoder.BL.csprojAssemblyReference.cache
+C:\Users\Tsorion\source\repos\Decoder\Decoder.BL\obj\Debug\Decoder.BL.csproj.CoreCompileInputs.cache
+C:\Users\Tsorion\source\repos\Decoder\Decoder.BL\obj\Debug\Decoder.BL.dll
+C:\Users\Tsorion\source\repos\Decoder\Decoder.BL\obj\Debug\Decoder.BL.pdb
