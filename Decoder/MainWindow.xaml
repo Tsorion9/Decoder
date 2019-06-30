@@ -24,6 +24,7 @@
             <ComboBoxItem Content="Шифр Цезаря (ключ известен)" Selected="CaesarCipher_Selected"/>
             <ComboBoxItem Content="Шифр Атбаш" Selected="CipherAtbash_Selected"/>
             <ComboBoxItem Content="Метод статистического анализа" Selected="ComboBoxItem_Selected_1"/>
+            <ComboBoxItem Content="Шифр Гронсфельда" Selected="GronsfeldCipher_Select"/>
         </ComboBox>
         <ListBox Name="listBoxStatistics" Grid.Row="0" Grid.Column="2">
         </ListBox>

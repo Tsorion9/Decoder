@@ -97,6 +97,15 @@ namespace Decoder
             }
         }
 
+        private void GronsfeldCipher_Select(object sender, RoutedEventArgs e)
+        {
+            if (!grid.Children.Contains(textBoxKey))
+            {
+                grid.Children.Add(textBlockKey);
+                grid.Children.Add(textBoxKey);
+            }
+        }
+
         private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
         {
             if (grid.Children.Contains(textBoxKey))

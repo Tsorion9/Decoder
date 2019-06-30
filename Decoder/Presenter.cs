@@ -61,6 +61,15 @@ namespace Decoder
                     else
                         MessageBox.Show("В зашифрованном тексте имеются запрещенные символы.");
                     break;
+
+                case "Шифр Гронсфельда":
+                    if(manager.IsRusSymbol(view.GetCipherText))
+                    {
+                        view.DecryptedText = manager.GronsfeldCipher(view.GetCipherText, view.GetKey);
+                    }
+                    else
+                        MessageBox.Show("В зашифрованном тексте имеются запрещенные символы.");
+                    break;
             }
         }
     }

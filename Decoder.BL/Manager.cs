@@ -11,6 +11,7 @@ namespace Decoder.BL
         String CaesarCipher(String cipherText, Int32 key);
         String CipherAtbash(String cipherText, params Char[] key);
         String StatisticalAnalysis(String cipherText);
+        String GronsfeldCipher(String cipherText, String key);
         List<String> Statistics(String cipherText);
         Boolean IsRusSymbol(String text);
     }
@@ -66,6 +67,7 @@ namespace Decoder.BL
                 statistics.Add(String.Format("{0} - {1}%", item.Key.ToString(), Math.Round(item.Value * 100, 3).ToString()));
             }
 
+            statistics.Reverse();
             return statistics;
         }
 
@@ -80,6 +82,11 @@ namespace Decoder.BL
             }
 
             return flag;
+        }
+
+        public String GronsfeldCipher(String cipherText, String key)
+        {
+            return Decoder.GronsfeldCipher(cipherText, key);
         }
     }
 }
