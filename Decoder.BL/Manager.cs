@@ -20,22 +20,134 @@ namespace Decoder.BL
     {
         public String CaesarCipher(String cipherText)
         {
-            return Decoder.CaesarCipher(cipherText);
+            StringBuilder sourceText = new StringBuilder();
+            String alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            cipherText = cipherText.ToLower();
+            Char[] sourceTextVar = new Char[cipherText.Length];
+
+            for (Int32 key = 1; key <= 32; key++)
+            {
+                for (Int32 i = 0; i < cipherText.Length; i++)
+                {
+                    if (!Char.IsLetter(cipherText[i]))
+                        sourceTextVar[i] = cipherText[i];
+                    else
+                    {
+                        for (Int32 j = 0; j < alphabet.Length; j++)
+                        {
+                            if (cipherText[i] == alphabet[j])
+                            {
+                                if ((j - key) < 0)
+                                    sourceText[i] = alphabet[(j - key) + 33];
+                                else sourceText[i] = alphabet[j - key];
+                                break;
+                            }
+                        }
+                    }
+                }
+                sourceText.Append(String.Format("Вариант {0}\n", key));
+                sourceText.Append(new String(sourceTextVar) + "\n");
+            }
+            return sourceText.ToString();
         }
 
         public String CaesarCipher(String cipherText, Int32 key)
         {
-            return Decoder.CaesarCipher(cipherText, key);
+            String alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            cipherText = cipherText.ToLower();
+            Char[] sourceText = new Char[cipherText.Length];
+
+            for (Int32 i = 0; i < cipherText.Length; i++)
+            {
+                if (!Char.IsLetter(cipherText[i]))
+                    sourceText[i] = cipherText[i];
+                else
+                {
+                    for (Int32 j = 0; j < alphabet.Length; j++)
+                    {
+                        if (cipherText[i] == alphabet[j])
+                        {
+                            if ((j - key) < 0)
+                                sourceText[i] = alphabet[(j - key) + 33];
+                            else
+                                sourceText[i] = alphabet[j - key];
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return new String(sourceText);
         }
 
         public String CipherAtbash(String cipherText, params Char[] key)
         {
-            return Decoder.CipherAtbash(cipherText, key);
+            String alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            Char[] sourceText = new Char[cipherText.Length];
+            cipherText = cipherText.ToLower();
+
+            for (Int32 i = 0; i < cipherText.Length; i++)
+            {
+                if (!Char.IsLetter(cipherText[i]))
+                    sourceText[i] = cipherText[i];
+                else
+                {
+                    for (Int32 j = 0; j < alphabet.Length; j++)
+                    {
+                        if (cipherText[i] == key[j])
+                        {
+                            sourceText[i] = alphabet[j];
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return new String(sourceText);
         }
 
         public String StatisticalAnalysis(String cipherText)
         {
-            return Decoder.StatisticalAnalysis(cipherText);
+            Dictionary<Char, Double> keyValuePairs = new Dictionary<Char, Double>();
+            String frequency = "оеаинтсрвлкмдпуяыьгзбчйжчшюцщэфёъ";
+            cipherText = cipherText.ToLower();
+            Char[] sourceText = new Char[cipherText.Length];
+            Int32 letters = 0;
+
+            for (Int32 i = 0; i < cipherText.Length; i++)
+            {
+                if (Char.IsLetter(cipherText[i]))
+                    letters++;
+            }
+
+            for (Int32 i = 0; i < cipherText.Length; i++)
+            {
+                if (!Char.IsLetter(cipherText[i]))
+                    sourceText[i] = cipherText[i];
+                else
+                {
+                    if (keyValuePairs.ContainsKey(cipherText[i]))
+                        keyValuePairs[cipherText[i]] = keyValuePairs[cipherText[i]] + 1D / letters;
+                    else
+                        keyValuePairs.Add(cipherText[i], 1D / letters);
+                }
+            }
+
+
+            keyValuePairs = keyValuePairs.OrderBy(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+            Char[] vs = keyValuePairs.Keys.ToArray();
+            Array.Reverse(vs);
+
+            for (Int32 i = 0; i < cipherText.Length; i++)
+            {
+                for (Int32 j = 0; j < vs.Length; j++)
+                {
+                    if (cipherText[i] == vs[j])
+                        sourceText[i] = frequency[j];
+                }
+            }
+
+            return new String(sourceText);
         }
 
         public List<String> Statistics(String cipherText)
@@ -73,20 +185,49 @@ namespace Decoder.BL
 
         public Boolean IsRusSymbol(String text)
         {
-            Boolean flag = true;
-
             foreach(Char item in text)
             {
                 if (Char.IsLetter(item) && !((item >= 'А' && item <= 'я') || item == 'Ё' || item == 'ё'))
-                    flag = false;
+                    return false;
             }
 
-            return flag;
+            return true;
         }
 
         public String GronsfeldCipher(String cipherText, String key)
         {
-            return Decoder.GronsfeldCipher(cipherText, key);
+            String alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            cipherText = cipherText.ToLower();
+            Char[] sourceText = new Char[cipherText.Length];
+            Int32 o = 0;
+
+
+            for (Int32 i = 0; i < cipherText.Length; i++)
+            {
+                if (!Char.IsLetter(cipherText[i]))
+                    sourceText[i] = cipherText[i];
+                else
+                {
+                    for (Int32 j = 0; j < alphabet.Length; j++)
+                    {
+                        if (cipherText[i] == alphabet[j])
+                        {
+                            if (j - (Int32)Char.GetNumericValue(key[o]) < 0)
+                                sourceText[i] = alphabet[j - (Int32)Char.GetNumericValue(key[o]) + 33];
+                            else
+                                sourceText[i] = alphabet[j - (Int32)Char.GetNumericValue(key[o])];
+                            break;
+                        }
+                    }
+
+                    if (o == key.Length - 1)
+                        o = 0;
+                    else
+                        o++;
+                }
+            }
+
+            return new String(sourceText);
         }
     }
 }

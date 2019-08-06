@@ -10,3 +10,9 @@ C:\Users\Tsorion\Decoder\Decoder.BL\obj\Debug\Decoder.BL.csprojAssemblyReference
 C:\Users\Tsorion\Decoder\Decoder.BL\obj\Debug\Decoder.BL.csproj.CoreCompileInputs.cache
 C:\Users\Tsorion\Decoder\Decoder.BL\obj\Debug\Decoder.BL.dll
 C:\Users\Tsorion\Decoder\Decoder.BL\obj\Debug\Decoder.BL.pdb
+C:\Users\livea\source\repos\Decoder\Decoder.BL\obj\Debug\Decoder.BL.dll
+C:\Users\livea\source\repos\Decoder\Decoder.BL\obj\Debug\Decoder.BL.pdb
+C:\Users\livea\source\repos\Decoder\Decoder.BL\bin\Debug\Decoder.BL.dll
+C:\Users\livea\source\repos\Decoder\Decoder.BL\bin\Debug\Decoder.BL.pdb
+C:\Users\livea\source\repos\Decoder\Decoder.BL\obj\Debug\Decoder.BL.csprojAssemblyReference.cache
+C:\Users\livea\source\repos\Decoder\Decoder.BL\obj\Debug\Decoder.BL.csproj.CoreCompileInputs.cache
